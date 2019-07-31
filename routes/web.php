@@ -15,20 +15,20 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api/v1'], function () use ($router) {
-	$router->post('register', 'User\AuthController@register');
-	$router->post('login', 'User\AuthController@login');
-	$router->post('refresh', 'User\AuthController@refresh');
+$router->group(['prefix' => 'api/v1', 'namespace' => 'User'], function () use ($router) {
+	$router->post('register', 'AuthController@register');
+	$router->post('login', 'AuthController@login');
+	$router->post('refresh', 'AuthController@refresh');
 
-	$router->group(['middleware' => 'auth'], function () use ($router) {
-		$router->post('logout', 'User\AuthController@logout');
+	$router->group(['middleware' => 'auth:api', 'namespace' => 'User'], function () use ($router) {
+		$router->post('logout', 'AuthController@logout');
 	});
 
-	$router->group(['prefix' => 'posts', 'middleware' => 'auth'], function () use ($router) {
-		$router->get('/', 'Post\PostController@index');
-		$router->post('/', 'Post\PostController@store');
-		$router->get('/{id}', 'Post\PostController@show');
-		$router->delete('/{id}', 'Post\PostController@destroy');
-		$router->put('/{id}', 'Post\PostController@update');
+	$router->group(['prefix' => 'posts', 'middleware' => 'auth:api', 'namespace' => 'Post'], function () use ($router) {
+		$router->get('/', 'PostController@index');
+		$router->post('/', 'PostController@store');
+		$router->get('/{id}', 'PostController@show');
+		$router->delete('/{id}', 'PostController@destroy');
+		$router->put('/{id}', 'PostController@update');
 	});
 });
