@@ -3,6 +3,9 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
+/**
+ * @todo Add backend error test and registeration validation method
+ */
 class RegisterationTest extends TestCase
 {
     /**
@@ -29,8 +32,6 @@ class RegisterationTest extends TestCase
 
     /**
      * Register user with duplicate email to get error.
-     *
-     * @todo Add validation method
      *
      * @return void
      */

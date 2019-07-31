@@ -15,10 +15,12 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api/v1', 'namespace' => 'User'], function () use ($router) {
-	$router->post('register', 'AuthController@register');
-	$router->post('login', 'AuthController@login');
-	$router->post('refresh', 'AuthController@refresh');
+$router->group(['prefix' => 'api/v1'], function () use ($router) {
+	$router->group(['namespace' => 'User'], function () use ($router) {
+		$router->post('register', 'AuthController@register');
+		$router->post('login', 'AuthController@login');
+		$router->post('refresh', 'AuthController@refresh');
+	});
 
 	$router->group(['middleware' => 'auth:api', 'namespace' => 'User'], function () use ($router) {
 		$router->post('logout', 'AuthController@logout');

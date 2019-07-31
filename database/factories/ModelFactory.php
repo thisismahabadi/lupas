@@ -19,6 +19,12 @@ $factory->define(App\Models\User\User::class, function (Faker\Generator $faker) 
     ];
 });
 
+$factory->state(App\Models\User\User::class, 'unhash', function (Faker\Generator $faker) {
+    return [
+        'password' => $faker->password,
+    ];
+});
+
 $factory->define(App\Models\Post\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->word,

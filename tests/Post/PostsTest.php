@@ -3,6 +3,9 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
+/**
+ * @todo Add backend error test
+ */
 class PostsTest extends TestCase
 {
     /**
