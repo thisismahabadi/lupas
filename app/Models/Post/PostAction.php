@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models\Post;
 
-use App\Post;
+use App\Models\Post\Post;
 
  /**
   * @version 1.0.0

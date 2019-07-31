@@ -12,7 +12,7 @@ class PostsTest extends TestCase
      */
     public function testVisitPostsAsLoggedInUser()
     {
-        $user = factory('App\User')->create();
+        $user = factory('App\Models\User\User')->create();
 
         $this->actingAs($user)
              ->get('/api/v1/posts')
@@ -43,8 +43,8 @@ class PostsTest extends TestCase
      */
     public function testCreatePostSuccessfully()
     {
-        $post = factory('App\Post')->make();
-        $user = factory('App\User')->create();
+        $post = factory('App\Models\Post\Post')->make();
+        $user = factory('App\Models\User\User')->create();
 
         $data = [
             'title' => $post->title,
@@ -66,8 +66,8 @@ class PostsTest extends TestCase
      */
     public function testCreatePostWithError()
     {
-        $post = factory('App\Post')->make();
-        $user = factory('App\User')->create();
+        $post = factory('App\Models\Post\Post')->make();
+        $user = factory('App\Models\User\User')->create();
 
         $data = [
             'title' => $post->title,
@@ -88,7 +88,7 @@ class PostsTest extends TestCase
      */
     public function testCreatePostAsGuest()
     {
-        $post = factory('App\Post')->make();
+        $post = factory('App\Models\Post\Post')->make();
 
         $data = [
             'title' => $post->title,
@@ -109,8 +109,8 @@ class PostsTest extends TestCase
      */
     public function testVisitSpecificPost()
     {
-        $user = factory('App\User')->create();
-        $post = factory('App\Post')->create();
+        $user = factory('App\Models\User\User')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $this->actingAs($user)
              ->get('/api/v1/posts/'.$post->id)
@@ -127,7 +127,7 @@ class PostsTest extends TestCase
      */
     public function testVisitSpecificPostAsGuest()
     {
-        $post = factory('App\Post')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $this->get('/api/v1/posts/'.$post->id)
              ->seeJson([
@@ -143,8 +143,8 @@ class PostsTest extends TestCase
      */
     public function testDeleteSpecificPost()
     {
-        $user = factory('App\User')->create();
-        $post = factory('App\Post')->create();
+        $user = factory('App\Models\User\User')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $this->actingAs($user)
              ->json('DELETE', '/api/v1/posts/'.$post->id)
@@ -158,7 +158,7 @@ class PostsTest extends TestCase
      */
     public function testDeleteSpecificPostAsGuest()
     {
-        $post = factory('App\Post')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $this->json('DELETE', '/api/v1/posts/'.$post->id)
              ->seeJson([
@@ -174,8 +174,8 @@ class PostsTest extends TestCase
      */
     public function testUpdateSpecificPostSuccessfully()
     {
-        $user = factory('App\User')->create();
-        $post = factory('App\Post')->create();
+        $user = factory('App\Models\User\User')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $data = [
             'title' => $post->title,
@@ -197,8 +197,8 @@ class PostsTest extends TestCase
      */
     public function testUpdateSpecificPostWithError()
     {
-        $user = factory('App\User')->create();
-        $post = factory('App\Post')->create();
+        $user = factory('App\Models\User\User')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $data = [
             'title' => $post->title,
@@ -219,7 +219,7 @@ class PostsTest extends TestCase
      */
     public function testUpdateSpecificPostAsGuest()
     {
-        $post = factory('App\Post')->create();
+        $post = factory('App\Models\Post\Post')->create();
 
         $data = [
             'title' => $post->title,

@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use DB;
 use Auth;
-use App\User;
 use Validator;
-use App\Response;
+use App\Models\Response;
+use App\Models\User\User;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
  /**
@@ -111,8 +112,6 @@ class AuthController extends Controller
                     $data =  json_decode($oauth->getContent(), true);
 
                     return Response::generate('success', $data, 200);
-                } else {
-                    return Response::generate('error', 'Unauthenticated', 401);
                 }
             }
 

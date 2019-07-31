@@ -12,7 +12,7 @@ class RegisterationTest extends TestCase
      */
     public function testSuccessfullUserRegisteration()
     {
-        $user = factory('App\User')->make();
+        $user = factory('App\Models\User\User')->make();
 
         $data = [
             'name' => $user->name,
@@ -36,7 +36,7 @@ class RegisterationTest extends TestCase
      */
     public function testUserRegisterationWithDuplicateError()
     {
-        $user = factory('App\User')->create();
+        $user = factory('App\Models\User\User')->create();
 
         $data = [
             'name' => $user->name,

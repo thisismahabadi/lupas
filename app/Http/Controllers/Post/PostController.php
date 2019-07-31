@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Post;
 
-use App\Post;
 use Exception;
 use Validator;
-use App\Response;
-use App\PostAction;
+use App\Models\Response;
+use App\Models\Post\Post;
 use Illuminate\Http\Request;
+use App\Models\Post\PostAction;
+use App\Http\Controllers\Controller;
 
  /**
   * @version 1.0.0

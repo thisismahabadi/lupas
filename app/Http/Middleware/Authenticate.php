@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Response;
+use App\Models\Response;
 use Illuminate\Contracts\Auth\Factory as Auth;
 
 class Authenticate

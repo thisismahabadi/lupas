@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
  /**
   * @version 1.0.0
